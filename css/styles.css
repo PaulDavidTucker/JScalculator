@@ -1,8 +1,14 @@
-h1 #MainTitle{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: x-large;
-    padding: 5%;
-    color: brown;
+div #TitleSubText{
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body{
+    margin: 0em;
+    padding: 0em;
+    background: linear-gradient(to right, orange, green);
 }
 
  .ActionButton{
@@ -15,4 +21,22 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+table#Grid {
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+th{
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    background-color: aliceblue;
+}
+
+td{
+    padding: 1em;
+    background: linear-gradient(to right, aliceblue, lightblue);
 }

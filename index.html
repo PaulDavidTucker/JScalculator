@@ -10,17 +10,59 @@
 </head>
 <body>
     <header>
-        <h1 id="MainTitle">Simple Javascript Calculator</h1>
-        <p id="TitleSubText">Enter the values below and see the results!</p>
+        <h1 id="MainTitle">Simple Javascript Calculator</h1>   
     </header>
-
     <div>
-        <button id="Submit" type="button" class="ActionButton">Submit</button>
-        <button type="button" class="ActionButton">Clear</button>
-        <button type="button" class="ActionButton">AC</button>
-        <button type="button" class="ActionButton">ANS</button>
+        <p id="TitleSubText">Enter the values below and see the results!</p>
     </div>
     
+
+    <section>
+        <table id="Grid">
+            <!--This row will be the black row with the numbers on it-->
+            <tr id="NumberDisplay">
+                <th colspan="4">Numbers go here</th>
+            </tr>
+
+            <tr>
+                <td><button id="AC" type="button" class="ActionButton">AC</button></td>
+                <td><button id="ANS" type="button" class="ActionButton">ANS</button></td>
+                <td><button id="Delete" type="button" class="ActionButton">DEL</button></td>
+                <td><button type="button" class="ActionButton">÷</button></td>
+            </tr>
+
+            <tr>
+                <td><button type="button" class="ActionButton">1</button></td>
+                <td><button type="button" class="ActionButton">2</button></td>
+                <td><button type="button" class="ActionButton">3</button></td>
+                <td><button type="button" class="ActionButton">*</button></td>
+            </tr>
+
+            <tr>
+                <td><button type="button" class="ActionButton">4</button></td>
+                <td><button type="button" class="ActionButton">5</button></td>
+                <td><button type="button" class="ActionButton">6</button></td>
+                <td><button type="button" class="ActionButton">+</button></td>
+            </tr>
+
+            <tr>
+                <td><button type="button" class="ActionButton">7</button></td>
+                <td><button type="button" class="ActionButton">8</button></td>
+                <td><button type="button" class="ActionButton">9</button></td>
+                <td><button type="button" class="ActionButton">-</button></td>
+            </tr>
+
+            <tr>
+                <td><button type="button" class="ActionButton">.</button></td>
+                <td><button type="button" class="ActionButton">0</button></td>
+                <td colspan="2"><button type="button" class="ActionButton">=</button></td>
+
+            </tr>
+            
+        </table>
+    </section>
 </body>
 <script src="/index.js"></script>
 </html>
+
+        
