@@ -12,15 +12,40 @@ body{
 }
 
  .ActionButton{
-    padding: 1em;
+    padding: 2em;
+    background: linear-gradient(to right, aliceblue, lightblue);
+    width: 100%;
+}
+
+.NumberButton{
+    padding: 2em;
+    align-items: center;
+    background: linear-gradient(to right, aliceblue, lightblue);
+    width: 100%;
+}
+
+.FunctionButton{
+    padding: 2em;
     background-color: aqua;
-    border:0.1em solid black;
+    background: linear-gradient(to right, aliceblue, lightblue);
+    width: 100%;
+}
+
+button{
+    font-weight: 900;
+    font-size: 1em
+}
+
+button:hover{
+    opacity: 80%;
+    background: linear-gradient(to right, lightblue, cadetblue);
 }
 
 header{
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 table#Grid {
@@ -33,10 +58,19 @@ table#Grid {
 th{
     padding-top: 1.5em;
     padding-bottom: 1.5em;
-    background-color: aliceblue;
+    padding-left: 0.2em;
+    text-align: left;
+    background: -moz-linear-gradient(left, black, gray);
+    color: antiquewhite;
 }
 
 td{
-    padding: 1em;
+    padding: 0em;
     background: linear-gradient(to right, aliceblue, lightblue);
+    align-items: center;
 }
+
+tr{
+    align-items: center;
+}
+
