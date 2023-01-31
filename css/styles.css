@@ -1,0 +1,18 @@
+h1 #MainTitle{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: x-large;
+    padding: 5%;
+    color: brown;
+}
+
+ .ActionButton{
+    padding: 1em;
+    background-color: aqua;
+    border:0.1em solid black;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
