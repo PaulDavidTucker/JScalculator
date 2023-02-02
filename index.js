@@ -1,16 +1,14 @@
-var button = document.getElementById('Submit')
-
-button.addEventListener("click", submit)
-
-var numberButtons = document.querySelectorAll("NumberButton")
-var FunctionButtons = document.querySelectorAll("FunctionButton")
-var ActionButton = document.querySelectorAll("ActionButton")
-var display = document.getElementById("NumberDisplay")
+var numberButtons = document.querySelectorAll(".NumberButton")
+var OperationButton = document.querySelectorAll(".OperationButton")
+var ActionButton = document.querySelectorAll(".ActionButton")
+var MainDisplay = document.getElementById("NumberDisplay")
+var SecondDisplay = document.getElementById("SecondDisplay")
 
 class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
       this.previousOperandTextElement = previousOperandTextElement
       this.currentOperandTextElement = currentOperandTextElement
+      this.OperationIsSelected = false
       this.clear()
     }
 
@@ -22,28 +20,90 @@ class Calculator {
         this.currentOperand = ''
         this.previousOperand = ''
         this.operation = undefined
+        this.OperationIsSelected = false
+        this.updateMainDisplay()
+        this.updateSecondDisplay()
     }
 
-    appendNumber(number){
-        this.currentOperand = number
+    appendFirstNumber(number){
+      if (number === '.' && this.currentOperand.includes('.')) return
+        this.currentOperand = this.currentOperand.toString() + number.toString()
+      
     }
 
-    updateDisplay(){
-        display.innerText = this.currentOperand
-        console.log(thi.currentOperand)
+    changeOperation(operationGiven){
+      if (this.OperationIsSelected == false) {
+        this.operation = operationGiven
+        this.OperationIsSelected = true
+      }
+        
+      
+    }
+
+    updateMainDisplay(){
+      if (this.currentOperand == '') {
+        MainDisplay.innerText = '0'
+      }else{
+        MainDisplay.innerText = this.currentOperand
+      }
+    }
+
+    //In AC/clear method set the operation to undefined
+    updateSecondDisplay(){
+      SecondDisplay.innerText = "Operation: "+ this.operation
     }
     
+    DoSelectedAction(action){
+      switch (action) {
+        case "AC":
+          this.clear()
+          break;
+        case "ANS":
+          break;
+        case "DEL":
+          break;
+        case "=":
+          break;
+      
+        default:
+          break;
+      }
+    }
     
 }
 
-var Calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+//New calculator object to operate on
+var calculator = new Calculator(0, 0)
+
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-      Calculator.appendNumber(button.innerText)
-      Calculator.updateDisplay()
-      console.log(button.innerText)
+      if (calculator.OperationIsSelected) {
+        //Start inputting the second operand
+      } else {
+        calculator.appendFirstNumber(button.innerText)
+      }
+      //Updates display
+      calculator.updateMainDisplay()
     })
   })
 
+
+  //For every operation + / - * 
+  OperationButton.forEach(button => {
+    //Add a listener
+    button.addEventListener('click', () => {
+      calculator.changeOperation(button.innerText)
+      calculator.updateSecondDisplay()
+    })
+  })
+
+
+  //For every action button 
+  ActionButton.forEach(button => {
+    //Add listener
+    button.addEventListener('click', () => {
+      calculator.DoSelectedAction(button.innerHTML)
+    })
+  })
 
