@@ -9,6 +9,7 @@ class Calculator {
       this.previousOperandTextElement = previousOperandTextElement
       this.currentOperandTextElement = currentOperandTextElement
       this.OperationIsSelected = false
+      this.Ans= undefined
       this.clear()
     }
 
@@ -59,12 +60,18 @@ class Calculator {
           this.clear()
           break;
         case "ANS":
+          //If we have a value stored
+          if (this.Ans != undefined){
+            //Set the value of our operand to ans.
+            this.currentOperand = this.Ans
+          }
           break;
         case "DEL":
+          
           break;
         case "=":
+          //Need to set the value on the second display to ANS = value to make it seem realistic
           break;
-      
         default:
           break;
       }
