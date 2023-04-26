@@ -1,0 +1,30 @@
+{
+  "name": "jscalculator",
+  "version": "1.0.0",
+  "description": "A simple calculator built using HTML, CSS and JS to run in the browser",
+  "main": "index.html",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tryInstall": "npm install -g live-server",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PaulDavidTucker/JScalculator.git"
+  },
+  "keywords": [
+    "HTML",
+    "JS",
+    "CSS",
+    "Git"
+  ],
+  "author": "Paul Tucker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaulDavidTucker/JScalculator/issues"
+  },
+  "homepage": "https://github.com/PaulDavidTucker/JScalculator#readme"
+}
