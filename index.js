@@ -4,18 +4,22 @@ var ActionButton = document.querySelectorAll(".ActionButton")
 var MainDisplay = document.getElementById("NumberDisplay")
 var SecondDisplay = document.getElementById("SecondDisplay")
 
+/**
+ * Class to represent a calculator object.
+ */
 class Calculator {
-    constructor(previousOperandTextElement, currentOperandTextElement) {
-      this.previousOperandTextElement = previousOperandTextElement
-      this.currentOperandTextElement = currentOperandTextElement
+
+
+
+    constructor(previousOperand, currentOperand) {
+      this.previousOperand = previousOperand
+      this.currentOperand = currentOperand
       this.OperationIsSelected = false
       this.Ans= undefined
-      this.clear()
+      this.updateMainDisplay()
     }
 
-    calculate(operation, ){
-        alert("Button clicked")
-    }
+    
     
      clear(){
         this.currentOperand = ''
@@ -26,21 +30,79 @@ class Calculator {
         this.updateSecondDisplay()
     }
 
+
     appendFirstNumber(number){
       if (number === '.' && this.currentOperand.includes('.')) return
         this.currentOperand = this.currentOperand.toString() + number.toString()
       
     }
 
+
+    /**
+     * Method to update object's operation and display.
+     * @param {String} operationGiven 
+     */
     changeOperation(operationGiven){
-      if (this.OperationIsSelected == false) {
-        this.operation = operationGiven
-        this.OperationIsSelected = true
-      }
-        
+      this.operation = operationGiven
+      this.OperationIsSelected = true
+      
+      this.updateSecondDisplay(operationGiven)
       
     }
 
+    /**
+     * Method to do the operation assigned with operands supplied. Returns result of the operation
+     * @param {String} operation
+     * @param {Number} operand1
+     * @param {Number} operand2
+     */
+    doOperation(operation, operand1, operand2){
+      if (this.OperationIsSelected == false){
+          //TODO
+          //Message to an output (undefined operation)
+      }
+
+      var result;
+
+      switch (operation) {
+        case "+":
+          result = operand1 + operand2
+          this.Ans = result
+          return result
+          break;
+        case "-":
+          result = operand1 - operand2
+          this.Ans = result
+          return result
+          break;
+        case "*":
+          result = operand1 * operand2
+          this.Ans = result
+          return result
+          break;
+        case "/":
+          result = operand1 / operand2
+          this.Ans = result
+          return result
+          break;
+        default:
+          break;
+      }
+
+
+      //Deselct the operation for next use
+      this.OperationIsSelected = false
+      //Pass empty operation
+      this.changeOperation("")
+
+
+  }
+
+
+    
+    /**
+     * Alters the html element innertext to objects current first operand
+     */
     updateMainDisplay(){
       if (this.currentOperand == '') {
         MainDisplay.innerText = '0'
@@ -83,6 +145,7 @@ class Calculator {
 var calculator = new Calculator(0, 0)
 
 
+// each of these methods assigns an action to all buttons of this type.
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
       if (calculator.OperationIsSelected) {
