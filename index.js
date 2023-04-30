@@ -8,13 +8,14 @@ var calculator = new Calculator(0, 0)
 // each of these methods assigns an action to all buttons of this type.
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
+      var WORKING_OPERAND = calculator.WORKING_OPERAND
       if (calculator.OperationIsSelected) {
-        //Start inputting the second operand
+        calculator.appendSecondNumber(button.innerText)
       } else {
         calculator.appendFirstNumber(button.innerText)
       }
       //Updates display
-      calculator.updateMainDisplay()
+      calculator.updateMainDisplay(WORKING_OPERAND)
     })
   })
 
@@ -25,6 +26,7 @@ numberButtons.forEach(button => {
     button.addEventListener('click', () => {
       calculator.changeOperation(button.innerText)
       calculator.updateSecondDisplay()
+      calculator.swapToSecondOperand();
     })
   })
 
