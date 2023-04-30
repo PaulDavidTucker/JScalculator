@@ -12,9 +12,20 @@ export class Calculator {
       this.currentOperand = currentOperand
       this.OperationIsSelected = false
       this.Ans= undefined
-      this.updateMainDisplay()
+      this.updateMainDisplay("first")
+
+      //We set the default working operand to first
+      this.WORKING_OPERAND = "first";
     }
 
+
+    /**
+     * Updates the working operand to either first or second.
+     * @param {String} operand Value must be either "first" or "second". 
+     */
+    setWorkingOperand(operand){
+      this.WORKING_OPERAND = operand; 
+    }
     
     /**
      * Method to clear the calculator object's operands and operation.
@@ -24,7 +35,8 @@ export class Calculator {
         this.previousOperand = ''
         this.operation = undefined
         this.OperationIsSelected = false
-        this.updateMainDisplay()
+        this.setWorkingOperand("first");
+        this.updateMainDisplay(this.WORKING_OPERAND)
         this.updateSecondDisplay()
     }
 
@@ -40,6 +52,20 @@ export class Calculator {
 
 
     /**
+     * Method to append a number to the second operand.
+     * @param {Number} number Number to append to the second operand.
+     * @returns nothing
+     * @todo Add a check to see if the number is a decimal and if the second operand already contains a decimal.
+     * If it does, then do not append the decimal.
+     *
+     */
+
+    appendSecondNumber(number){
+      if (number === '.' && this.previousOperand.includes('.')) return
+        this.previousOperand = this.previousOperand.toString() + number.toString()
+    }
+
+    /**
      * Method to update object's operation and display.
      * @param {String} operationGiven 
      */
@@ -49,6 +75,17 @@ export class Calculator {
       
       this.updateSecondDisplay(operationGiven)
       
+    }
+
+
+    /**
+     * Method to swap the working operand to the second operand.
+     * This is used when the user has selected an operation and is now inputting the second operand.
+     * This method also updates the display to show the second operand.
+    */
+    swapToSecondOperand(){
+      this.setWorkingOperand("second");
+      this.updateMainDisplay(this.WORKING_OPERAND);
     }
 
     /**
@@ -99,17 +136,45 @@ export class Calculator {
 
   }
 
+  /**
+   * Method to display the result of a calculation.
+   */
+  updateDisplayToShowAnswer(){
+    MainDisplay.innerText = this.Ans;
+  }
+
+  reset(){
+    this.currentOperand = this.Ans
+    this.previousOperand = ''
+    this.operation = undefined
+    this.OperationIsSelected = false
+    this.setWorkingOperand("first");
+  }
+
 
     
     /**
      * Alters the html element innertext to objects current first operand
+     * @param {String} operandMode This is to determine which operand to update the value displayed on the calculator.
      */
-    updateMainDisplay(){
-      if (this.currentOperand == '') {
-        MainDisplay.innerText = '0'
-      }else{
-        MainDisplay.innerText = this.currentOperand
+    updateMainDisplay(operandMode){
+      if (operandMode == "first"){
+        if (this.currentOperand == '') {
+          MainDisplay.innerText = '0'
+        }else{
+          MainDisplay.innerText = this.currentOperand
+        }
+      }else if (operandMode == "second"){
+        if (this.previousOperand == '') {
+          MainDisplay.innerText = '0'
+        } else {
+          MainDisplay.innerText = this.previousOperand
+        }
+        
       }
+
+      SecondDisplay.innerText = "Operation: "+ this.operation;
+      
     }
 
     //In AC/clear method set the operation to undefined
@@ -127,17 +192,31 @@ export class Calculator {
           this.clear()
           break;
         case "ANS":
-          //If we have a value stored
+          //If we have a value stored. We set value of ans on calculation.
           if (this.Ans != undefined){
             //Set the value of our operand to ans.
-            this.currentOperand = this.Ans
-          }
+              this.currentOperand = this.Ans
+	            this.updateMainDisplay(this.WORKING_OPERAND);
+	            console.log("Ans was pressed and value of ans is: "+ this.ans)
+          }else{
+	            console.log("We have no ans value")
+	        }
           break;
         case "DEL":
           
           break;
         case "=":
-          //Need to set the value on the second display to ANS = value to make it seem realistic
+          //If we have an operation selected and both operands are not empty
+          if (this.OperationIsSelected == true && this.currentOperand != '' && this.previousOperand != ''){
+            //We do the operation
+            var result = this.doOperation(this.operation, parseFloat(this.currentOperand), parseFloat(this.previousOperand))
+            //We set ans to the result
+            this.ans = result
+            //we display the result.
+            this.updateDisplayToShowAnswer();
+            //We clear the operands and operation. When we reset, we load the value of ans into first operand.
+            this.reset()
+          }
           break;
         default:
           break;
