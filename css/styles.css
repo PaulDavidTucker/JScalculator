@@ -92,3 +92,35 @@ tr{
     align-items: center;
 }
 
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+  }
+
+footer{
+    position: fixed;
+    width: 100%;
+    left: 0%;
+    bottom: 0%;
+    background: linear-gradient(to right, orange, green);
+    height: auto;
+  }
+
+footer p#FooterText{
+    display: inline;
+    text-align: left;
+    float: left;
+    padding: 0.2em;
+}
+
+footer p#CopyrightFooterText{
+    display: inline;
+    text-align: right;
+    float: right;
+    padding: 0.2em;
+}
