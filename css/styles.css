@@ -135,7 +135,7 @@ footer p#CopyrightFooterText{
     appearance: none;
     width: 100%; /* Full-width */
     height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
+    background-color: linear-gradient(to right #d60d0d, #f77902, #f7ef02, #23f702, #02f7b2, #0281f7, #2f02f7, #eb02f7, #f70247); /* Gradient background *//* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
@@ -160,6 +160,14 @@ footer p#CopyrightFooterText{
   .slider::-moz-range-thumb {
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
+    background: #04AA6D;
     cursor: pointer; /* Cursor on hover */
+  }
+
+  section#Colour-Slider{
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        width: 40%;
+        margin-left: 30%;
   }
