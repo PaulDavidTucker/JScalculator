@@ -1,94 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="icon" href="/assets/siteIcon.png">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <!--Script linked for icons @fontawesome.com-->
-    <script src="https://kit.fontawesome.com/5c933c4402.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <header>
-        <h1 id="MainTitle">Simple Javascript Calculator</h1>   
-    </header>
-    <div>
-        <p id="TitleSubText">Enter the values below and see the results!</p>
-    </div>
-    
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calculator</title>
+        <link rel="icon" href="./assets/siteIcon.png" />
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/styles.css" />
+        <!--Script linked for icons @fontawesome.com-->
+        <script
+            src="https://kit.fontawesome.com/5c933c4402.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <header>
+            <h1 id="MainTitle">Simple Javascript Calculator</h1>
+        </header>
+        <div>
+            <p id="TitleSubText">Enter the values below and see the results!</p>
+        </div>
 
-    <section>
-        <table id="Grid">
-            <!--This row will be the black row with the numbers on it-->
-            <tr class="NumberDisplay">
-                <th class="NumberDisplay" id="NumberDisplay" colspan="4">0</th>
-            </tr>
+        <section>
+            <table id="Grid">
+                <!--This row will be the black row with the numbers on it-->
+                <tr class="NumberDisplay">
+                    <th class="NumberDisplay" id="NumberDisplay" colspan="4">
+                        0
+                    </th>
+                </tr>
 
-            <tr class="SecondDisplay">
-                <th class="SecondDisplay" id="SecondDisplay" colspan="4">Operation: undefined</th>
-            </tr>
+                <tr class="SecondDisplay">
+                    <th class="SecondDisplay" id="SecondDisplay" colspan="4">
+                        Operation: undefined
+                    </th>
+                </tr>
 
-            <tr>
-                <td><button id="AC" type="button" class="ActionButton">AC</button></td>
-                <td><button id="ANS" type="button" class="ActionButton">ANS</button></td>
-                <td><button id="Delete" type="button" class="ActionButton">DEL</button></td>
-                <td><button type="button" class="OperationButton">÷</button></td>
-            </tr>
+                <tr>
+                    <td>
+                        <button id="AC" type="button" class="ActionButton">
+                            AC
+                        </button>
+                    </td>
+                    <td>
+                        <button id="ANS" type="button" class="ActionButton">
+                            ANS
+                        </button>
+                    </td>
+                    <td>
+                        <button id="Delete" type="button" class="ActionButton">
+                            DEL
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="OperationButton">÷</button>
+                    </td>
+                </tr>
 
-            <tr>
-                <td><button type="button" class="NumberButton">1</button></td>
-                <td><button type="button" class="NumberButton">2</button></td>
-                <td><button type="button" class="NumberButton">3</button></td>
-                <td><button type="button" class="OperationButton">*</button></td>
-            </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="NumberButton">1</button>
+                    </td>
+                    <td>
+                        <button type="button" class="NumberButton">2</button>
+                    </td>
+                    <td>
+                        <button type="button" class="NumberButton">3</button>
+                    </td>
+                    <td>
+                        <button type="button" class="OperationButton">*</button>
+                    </td>
+                </tr>
 
-            <tr>
-                <td><button type="button" class="NumberButton">4</button></td>
-                <td><button type="button" class="NumberButton">5</button></td>
-                <td><button type="button" class="NumberButton">6</button></td>
-                <td><button type="button" class="OperationButton">+</button></td>
-            </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="NumberButton">4</button>
+                    </td>
+                    <td>
+                        <button type="button" class="NumberButton">5</button>
+                    </td>
+                    <td>
+                        <button type="button" class="NumberButton">6</button>
+                    </td>
+                    <td>
+                        <button type="button" class="OperationButton">+</button>
+                    </td>
+                </tr>
 
-            <tr>
-                <td><button type="button" class="NumberButton">7</button></td>
-                <td><button type="button" class="NumberButton">8</button></td>
-                <td><button type="button" class="NumberButton">9</button></td>
-                <td><button type="button" class="OperationButton">-</button></td>
-            </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="NumberButton">7</button>
+                    </td>
+                    <td>
+                        <button type="button" class="NumberButton">8</button>
+                    </td>
+                    <td>
+                        <button type="button" class="NumberButton">9</button>
+                    </td>
+                    <td>
+                        <button type="button" class="OperationButton">-</button>
+                    </td>
+                </tr>
 
-            <tr>
-                <td><button type="button" class="NumberButton">.</button></td>
-                <td><button type="button" class="NumberButton">0</button></td>
-                <td colspan="2"><button type="button" id="Submit" class="ActionButton">=</button></td>
+                <tr>
+                    <td>
+                        <button type="button" class="NumberButton">.</button>
+                    </td>
+                    <td>
+                        <button type="button" class="NumberButton">0</button>
+                    </td>
+                    <td colspan="2">
+                        <button type="button" id="Submit" class="ActionButton">
+                            =
+                        </button>
+                    </td>
+                </tr>
+            </table>
 
-            </tr>
-            
-        </table>
-
-        <section id="Colour-Slider">
-            <!--Use this section to add a slider to select background colour. Work on in seperate branch.-->
-            <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-            </div>
-            <!--This is the text that will change when the slider is moved-->
-            <!-- TODO fit the slider into the same width as the table. -->
-            <p id="demo">Value is: </p>
+            <section id="Colour-Slider">
+                <!--Use this section to add a slider to select background colour. Work on in seperate branch.-->
+                <div class="slidecontainer">
+                    <input
+                        type="range"
+                        min="1"
+                        max="100"
+                        value="50"
+                        class="slider"
+                        id="myRange"
+                    />
+                </div>
+                <!--This is the text that will change when the slider is moved-->
+                <!-- TODO fit the slider into the same width as the table. -->
+                <p id="demo">Value is:</p>
+            </section>
         </section>
-    </section>
-</body>
+    </body>
 
-<footer>
-    <hr>
-    <p id="FooterText">Created by: <i class="fa-brands fa-github"></i><a href="https://github.com/PaulDavidTucker/" target="_blank"> Paul Tucker </a></p>
+    <footer>
+        <hr />
+        <p id="FooterText">
+            Created by: <i class="fa-brands fa-github"></i
+            ><a href="https://github.com/PaulDavidTucker/" target="_blank">
+                Paul Tucker
+            </a>
+        </p>
 
-    <p id="CopyrightFooterText"> &copy; It looks so cool to have a copyright sign here.</p>
-</footer>
+        <p id="CopyrightFooterText">
+            &copy; It looks so cool to have a copyright sign here.
+        </p>
+    </footer>
 
-<script type="module" src="./index.js"></script>
-<script src="/js/slider.js"></script>
+    <script type="module" src="./index.js"></script>
+    <script src="/js/slider.js"></script>
 </html>
-
-        
